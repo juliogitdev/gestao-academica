@@ -33,12 +33,50 @@ def salvar_dados(dados):
     except Exception as e:
         print(f"Erro ao salvar os dados. erro: {e}")
 
+def gerar_id(entidade):
+    dados = carregar_dados()
+
+    #verifica se está tentando gerar id para disciplina ou curso
+    if entidade == "cursos" or entidade == "disciplinas":
+        #pega as chaves(id) das entidades(disciplina ou curso) e armazena em uma lista
+        dados_entidade = dados[entidade].keys()
+
+        #caso não tenha dado dentro da entidade ele retorna 1 para o primeiro id
+        if not dados_entidade:
+            print(f"Sem dados de {entidade}")
+            return "1"
+        
+        #pega o maior id e iterar 1
+        new_id = int(max(dados_entidade)) + 1
+
+        #retorna o id gerado em formato de string
+        return str(new_id)
+        
+    else:
+        return print("Erro na entidade")
+
+#verifica se a entidade já tem registro
+def verficiar_registro_entidade(entidade):
+    dados = carregar_dados()
+
+    try:
+        qtd_dados_entidade = len(dados[entidade])
+        if qtd_dados_entidade > 0:
+            return True
+        else:
+            return False
+    except:
+        return print("Erro ao verificar se existe registro em entidade")
+
 #Adiciona um perfil
 def adicionar_aluno(nome, matricula, email):
     dados = carregar_dados()
 
+    #verifica se a matricula ja está cadastrada
     if not matricula in dados['alunos']:
+        #adiciona na chave alunos outro dicionario com a chave sendo a matricula do aluno e o valor os dados do aluno
         dados['alunos'][matricula] = {"nome": nome, "email": email, "cursos":[], "disciplinas": []}
+        #adiciona no dicionatio de notas outro dicionario com a chave sendo a matricula do aluno
         dados['notas'][matricula] = {}
         salvar_dados(dados)
         return True
@@ -46,4 +84,67 @@ def adicionar_aluno(nome, matricula, email):
         print(f"A matrícula {matricula} já existe.")
         return False
 
-adicionar_aluno("julio", 516561, "julio@gmail.com")
+#Excluir perfil
+def remover_aluno(matricula):
+    dados = carregar_dados()
+
+    if matricula in dados['alunos']:
+        del dados['alunos'][matricula]
+        del dados['notas'][matricula]
+        salvar_dados(dados)
+    
+    else:
+        print("Matrícula não cadastrada ou inválida")
+
+def adicionar_curso(nome, matricula):
+    id_curso = gerar_id("cursos")
+    curso = {"nome":nome, "id_aluno":matricula}
+    dados = carregar_dados()
+    if matricula in dados['alunos'].keys():
+        dados['cursos'][id_curso] = curso
+        dados['alunos'][matricula]['cursos'].append(id_curso)
+
+        salvar_dados(dados)
+        return print(f"Curso {nome} adicionado.")
+    
+    print("Dados inválido")
+
+def remover_curso():
+    return
+
+def adicionar_disciplina(nome, id_curso):
+    dados = carregar_dados()
+    
+    try:
+        curso = dados['cursos'][id_curso]
+        id_disciplina = gerar_id("disciplinas")
+        disciplina_nova = {"nome":nome, "id_curso":id_curso}
+        dados['disciplinas'][id_disciplina] = disciplina_nova
+        
+        matricula_aluno = curso['id_aluno']
+        aluno = dados['alunos'][matricula_aluno]
+
+        aluno['disciplinas'].append(id_disciplina)
+        dados['notas'][matricula_aluno][id_disciplina] = [0, 0]
+        
+
+    except:
+        return print("Erro ao encontrar o curso para associar a disciplina")
+    
+    salvar_dados(dados)
+    
+def gerenciar_nota(matricula, disciplina, nota, n_nota):
+    dados = carregar_dados()
+
+    if n_nota > 1 or n_nota < 0:
+        return print("Apenas nota 1 e nota 2 pode ser gerenciado")
+    try:
+        dados['notas'][matricula][disciplina][n_nota] = nota
+
+        salvar_dados(dados)
+    except:
+        return print("Erro ao gerenciar as notas")
+
+
+
+

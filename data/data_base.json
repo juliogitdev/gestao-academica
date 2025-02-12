@@ -1,6 +1,7 @@
 {
     "alunos": {},
-    "cursos": [],
-    "disciplinas": [],
-    "notas": {}
+    "cursos": {},
+    "disciplinas": {},
+    "notas": {
+    }
 }
