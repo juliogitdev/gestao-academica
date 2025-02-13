@@ -84,21 +84,10 @@ def adicionar_aluno(nome, matricula, email):
         print(f"A matrícula {matricula} já existe.")
         return False
 
-#Excluir perfil
-def remover_aluno(matricula):
-    dados = carregar_dados()
-
-    if matricula in dados['alunos']:
-        del dados['alunos'][matricula]
-        del dados['notas'][matricula]
-        salvar_dados(dados)
-    
-    else:
-        print("Matrícula não cadastrada ou inválida")
 
 def adicionar_curso(nome, matricula):
     id_curso = gerar_id("cursos")
-    curso = {"nome":nome, "id_aluno":matricula}
+    curso = {"nome":nome, "id_aluno":matricula, "id_disciplinas": []}
     dados = carregar_dados()
     if matricula in dados['alunos'].keys():
         dados['cursos'][id_curso] = curso
@@ -109,8 +98,6 @@ def adicionar_curso(nome, matricula):
     
     print("Dados inválido")
 
-def remover_curso():
-    return
 
 def adicionar_disciplina(nome, id_curso):
     dados = carregar_dados()
@@ -125,6 +112,8 @@ def adicionar_disciplina(nome, id_curso):
         aluno = dados['alunos'][matricula_aluno]
 
         aluno['disciplinas'].append(id_disciplina)
+        curso['id_disciplinas'].append(id_disciplina)
+
         dados['notas'][matricula_aluno][id_disciplina] = [0, 0]
         
 
@@ -144,6 +133,69 @@ def gerenciar_nota(matricula, disciplina, nota, n_nota):
         salvar_dados(dados)
     except:
         return print("Erro ao gerenciar as notas")
+
+
+def remover_disciplina(id_disciplina, save_automatic = True):
+    dados = carregar_dados()
+
+    try:
+        disciplina = dados['disciplinas'][id_disciplina]
+        
+        curso = dados['cursos'][disciplina['id_curso']]
+
+        aluno_id = curso['id_aluno']
+        aluno_disciplinas = dados['alunos'][aluno_id]['disciplinas']
+        
+        del dados['notas'][aluno_id][id_disciplina]
+        del dados['disciplinas'][id_disciplina]
+        aluno_disciplinas.remove(id_disciplina)
+        curso['id_disciplinas'].remove(id_disciplina)
+        
+        print(f"Disciplina {disciplina['nome']} removida com sucesso!")
+        if save_automatic:
+            salvar_dados(dados)
+        
+        return dados
+        
+    
+    except:
+        print("ERRO AO REMOVER DISCIPLINA")
+
+def remover_curso(id_curso, save_automatic = True):
+    try:
+        dados = carregar_dados()
+        curso = dados['cursos'][id_curso]
+        disciplinas_curso = dados['cursos'][id_curso]['id_disciplinas']
+    
+        for id_disciplina in disciplinas_curso:
+            dados = remover_disciplina(id_disciplina, False)
+    
+        aluno = dados['alunos'][curso['id_aluno']]
+    
+        aluno['cursos'].remove(id_curso)
+        del dados['cursos'][id_curso]
+
+        if save_automatic:
+            salvar_dados(dados)
+        return dados
+    except:
+        print("Erro ao remover curso")
+
+def remover_aluno(matricula):
+    try:
+        dados = carregar_dados()
+        cursos = dados['alunos'][matricula]['cursos']
+        for curso in cursos:
+            dados = remover_curso(curso, False)
+
+        del dados['alunos'][matricula]
+        del dados['notas'][matricula]
+        salvar_dados(dados)
+        print("Aluno Removido com sucesso")
+        return dados
+    
+    except:
+        print("Erro ao excluir aluno")
 
 
 
