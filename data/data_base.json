@@ -1,6 +1,15 @@
 {
-    "alunos": {"10":{}},
+    "alunos": {
+        "12345": {
+            "nome": "julio",
+            "email": "julio@gmail.com",
+            "cursos": [],
+            "disciplinas": []
+        }
+    },
     "cursos": {},
     "disciplinas": {},
-    "notas": {}
+    "notas": {
+        "12345": {}
+    }
 }

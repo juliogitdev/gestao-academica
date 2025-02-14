@@ -17,3 +17,5 @@ def validar_nota(nota):
 
 def validar_numero_nota(n_nota):
     return n_nota in [0, 1]
+
+print(validar_nome("julio"))

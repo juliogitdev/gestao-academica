@@ -205,3 +205,15 @@ def verificar_alunos():
     
     return False
 
+def verificar_login(matricula, email):
+    dados = carregar_dados()
+
+    try:
+        aluno = dados['alunos'][matricula]
+        if email != aluno['email']:
+            return False, ["Error", "E-mail inválido."]
+        
+        return True, None
+
+    except:
+        return False, ["Error", "Matricula não cadastrada ou inválida."]
