@@ -198,5 +198,10 @@ def remover_aluno(matricula):
         print("Erro ao excluir aluno")
 
 
-
+def verificar_alunos():
+    dados = carregar_dados()
+    if dados['alunos']:
+        return True
+    
+    return False
 
