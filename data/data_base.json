@@ -3,11 +3,37 @@
         "12345": {
             "nome": "julio",
             "email": "julio@gmail.com",
-            "cursos": [],
+            "cursos": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
             "disciplinas": []
         }
     },
-    "cursos": {},
+    "cursos": {
+        "1": {
+            "nome": "Sistemas",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "2": {
+            "nome": "Sistemas",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "3": {
+            "nome": "Sistemas",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "4": {
+            "nome": "Sistemas",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        }
+    },
     "disciplinas": {},
     "notas": {
         "12345": {}

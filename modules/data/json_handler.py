@@ -217,3 +217,5 @@ def verificar_login(matricula, email):
 
     except:
         return False, ["Error", "Matricula não cadastrada ou inválida."]
+    
+

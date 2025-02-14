@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from modules.data import json_handler
-from modules.interface import cadastro_aluno, login
+from modules.interface import cadastro_aluno, login, dashboard
 import config
 
 
@@ -14,7 +14,8 @@ def iniciar_app():
     
     #verifica se já existe aluno cadastrado no sistema para selecionar a tela inicial
     if json_handler.verificar_alunos():
-        login.tela_login(root)
+        #login.tela_login(root)
+        dashboard.exibir_dashboard(root, "12345")
     else:
         cadastro_aluno.tela_cadastro_aluno(root)
 
