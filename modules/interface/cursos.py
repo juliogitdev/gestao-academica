@@ -107,23 +107,22 @@ def tela_cursos(root, matricula):
 
     for id in cursos_id:
         cursos.append(dados['cursos'][id])
-        print(id)
     
 
 
     for i, curso in enumerate(cursos):
-        frame_curso = ctk.CTkFrame(frame_tabela, fg_color="gray20", corner_radius=5)
+        frame_curso = ctk.CTkFrame(frame_tabela, corner_radius=5)
         frame_curso.pack(pady=3, fill='x', padx=5)
 
-        label = ctk.CTkLabel(frame_curso, font=("Arial", 18, 'bold'), text=curso["nome"])
-        label.pack(anchor='w')
+        label = ctk.CTkLabel(frame_curso, font=("Arial", 18, 'bold'), text=curso["nome"] , height=30)
+        label.pack(anchor='w', padx=5)
 
         botao_detalhes = ctk.CTkButton(frame_curso, text="Detalhes", font=('Arial', 13, 'bold'), command= lambda id_curso = cursos_id    
                                        [i]: mostrar_detalhes(root, matricula, id_curso))
-        botao_detalhes.place(relx=0.6, relwidth=0.15)
+        botao_detalhes.place(relx=0.72, relwidth=0.15, rely=0.5, anchor='center')
 
         botao_excluir = ctk.CTkButton(frame_curso, text="Excluir", font=('Arial', 14, 'bold'), fg_color='transparent', hover_color=cor_vermelho, border_width=1, border_color=cor_vermelho, 
                                       command=lambda id_curso = cursos_id[i] : excluir_curso(id_curso, root, matricula))
 
         
-        botao_excluir.place(relx=0.8, relwidth=0.15)
+        botao_excluir.place(relx=0.9, relwidth=0.15, rely=0.5, anchor='center')

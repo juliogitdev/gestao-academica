@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from modules.data import json_handler
-from modules.interface import cadastro_disciplina, cursos, registro_notas, historico_academico, graficos_desempenho
+from modules.interface import cursos, disciplinas, registro_notas, historico_academico, graficos_desempenho
 
 def exibir_dashboard(root, matricula, tem_menu = False):
     for widget in root.winfo_children():
@@ -8,6 +8,7 @@ def exibir_dashboard(root, matricula, tem_menu = False):
     
     dados = json_handler.carregar_dados()
     dados_aluno = dados['alunos'][matricula]
+    id_disciplinas = dados_aluno['disciplinas']
 
     cor_verde = "#2e8b57"
     
@@ -40,7 +41,7 @@ def exibir_dashboard(root, matricula, tem_menu = False):
         button_cursos = ctk.CTkButton(frame_buttons , text='cursos', font=('Arial', 15, 'bold'), command= lambda: cursos.tela_cursos(frame_conteudo, matricula))
         button_cursos.pack(fill="both", expand=True, pady=2)
 
-        button_disciplinas = ctk.CTkButton(frame_buttons, text='disciplinas', font=('Arial', 15, 'bold'), command= lambda: cursos.tela_cursos(frame_conteudo, matricula))
+        button_disciplinas = ctk.CTkButton(frame_buttons, text='disciplinas', font=('Arial', 15, 'bold'), command= lambda: disciplinas.mostrar_disciplinas(frame_conteudo, matricula))
         button_disciplinas.pack(fill="both", expand=True, pady=2)
 
         button_notas = ctk.CTkButton(frame_buttons, text='notas', font=('Arial', 15, 'bold'), command= lambda: cursos.tela_cursos(frame_conteudo, matricula))
