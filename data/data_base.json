@@ -1,0 +1,102 @@
+{
+    "alunos": {
+        "12345": {
+            "nome": "julio",
+            "email": "julio@gmail.com",
+            "cursos": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "10"
+            ],
+            "disciplinas": [
+                "1",
+                "2"
+            ]
+        }
+    },
+    "cursos": {
+        "1": {
+            "nome": "dsada",
+            "id_aluno": "12345",
+            "id_disciplinas": [
+                "1",
+                "2"
+            ]
+        },
+        "2": {
+            "nome": "dsadasd",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "3": {
+            "nome": "dsadas",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "4": {
+            "nome": "dasd",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "5": {
+            "nome": "dasdasd",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "6": {
+            "nome": "dasdasda",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "7": {
+            "nome": "dasdasdasdasdas",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "8": {
+            "nome": "dasdasdasdasdasd",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "9": {
+            "nome": "dadsadasdasdas",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        },
+        "10": {
+            "nome": "dasdasdasdasdsadas",
+            "id_aluno": "12345",
+            "id_disciplinas": []
+        }
+    },
+    "disciplinas": {
+        "1": {
+            "nome": "Linguagem",
+            "id_curso": "1"
+        },
+        "2": {
+            "nome": "Design",
+            "id_curso": "1"
+        }
+    },
+    "notas": {
+        "12345": {
+            "1": [
+                0,
+                0
+            ],
+            "2": [
+                0,
+                0
+            ]
+        }
+    }
+}
