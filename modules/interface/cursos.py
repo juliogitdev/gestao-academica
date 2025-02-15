@@ -107,6 +107,7 @@ def tela_cursos(root, matricula):
 
     for id in cursos_id:
         cursos.append(dados['cursos'][id])
+        print(id)
     
 
 
@@ -117,8 +118,7 @@ def tela_cursos(root, matricula):
         label = ctk.CTkLabel(frame_curso, font=("Arial", 18, 'bold'), text=curso["nome"])
         label.pack(anchor='w')
 
-        botao_detalhes = ctk.CTkButton(frame_curso, text="Detalhes", font=('Arial', 13, 'bold'), command= lambda id_curso = cursos_id
-                                       
+        botao_detalhes = ctk.CTkButton(frame_curso, text="Detalhes", font=('Arial', 13, 'bold'), command= lambda id_curso = cursos_id    
                                        [i]: mostrar_detalhes(root, matricula, id_curso))
         botao_detalhes.place(relx=0.6, relwidth=0.15)
 
