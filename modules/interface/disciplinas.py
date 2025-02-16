@@ -94,15 +94,13 @@ def mostrar_disciplinas(root, matricula, opcao_curso='Selecionar curso'):
 
     frame_scroll_disciplinas.pack(padx=20, fill='both', expand=True)
 
-    frame_buttons = ctk.CTkFrame(root)
-    frame_buttons.pack(pady=20, padx=20, fill='x')
 
-    button_adicionar_disciplina = ctk.CTkButton(frame_buttons, text="Adicionar", font=("Arial", 18, "bold"),
+    button_adicionar_disciplina = ctk.CTkButton(frame_disciplinas, text="Adicionar", font=("Arial", 18, "bold"),
                                                 command=lambda: tela_adicionar_disciplina(root, combobox, cursos, matricula))
-    button_adicionar_disciplina.pack()
+    button_adicionar_disciplina.pack(pady=10)
 
-    button_voltar = ctk.CTkButton(frame_buttons, text="Voltar", fg_color='transparent', font=("Arial", 18, "bold"),
+    button_voltar = ctk.CTkButton(frame_disciplinas, text="Voltar", fg_color='transparent', font=("Arial", 18, "bold"),
                                   border_color=cor_verde, border_width=1,
-                                  command=lambda: dashboard.exibir_dashboard(root, matricula, True))
-    button_voltar.pack(pady=10, anchor='w')
+                                  command=lambda: dashboard.exibir_dashboard(root, matricula))
+    button_voltar.pack(pady=10, anchor='w', padx=10)
 

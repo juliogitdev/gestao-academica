@@ -4,10 +4,12 @@ from modules.interface import cadastro_aluno, login, dashboard
 import config
 
 
+
 def iniciar_app():
     ctk.set_appearance_mode(config.TEMA) 
     ctk.set_default_color_theme(config.TEMA_COR)
     root = ctk.CTk()
+    
     root.title("Sistema Gestão Acadêmica")
     
     # Defina o tamanho mínimo da janela, mas permita redimensionamento
@@ -20,6 +22,7 @@ def iniciar_app():
     # Verifica se já existe aluno cadastrado no sistema para selecionar a tela inicial
     if json_handler.verificar_alunos():
         login.tela_login(root)
+        #dashboard.exibir_dashboard(root, "12345")
     else:
         cadastro_aluno.tela_cadastro_aluno(root)
 

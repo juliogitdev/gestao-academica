@@ -12,12 +12,11 @@ def logar_aluno(input_matricula, input_email, root):
     if validators.validar_email(email) and validators.validar_matricula(matricula):
         autorizaçao_login, error = json_handler.verificar_login(matricula, email)
         if not autorizaçao_login:
-            return messagebox.showerror(error[0], error[1])
+            return messagebox.showerror(error[0], "Dados inválidos")
         
-        messagebox.showinfo('Sucesso', "Sucesso ao entrar!")
         return dashboard.exibir_dashboard(root, matricula)
 
-    return messagebox.showerror(error[0], error[1])
+    return messagebox.showerror(error[0], "Dados inválidos")
 
 
 def tela_login(root):

@@ -89,8 +89,9 @@ def tela_cursos(root, matricula):
     frame_cursos_cadastrados = ctk.CTkFrame(root)
     frame_cursos_cadastrados.place(relx=0.05, rely=0.1, relwidth=0.9, relheight=0.8)
 
-    button_voltar = ctk.CTkButton(root, text="Voltar", fg_color='transparent', font=("Arial", 18, "bold"), border_color=cor_verde, border_width=1, command= lambda: dashboard.exibir_dashboard(root, matricula, True))
+    button_voltar = ctk.CTkButton(root, text="Voltar", fg_color='transparent', font=("Arial", 18, "bold"), border_color=cor_verde, border_width=1, command= lambda: dashboard.exibir_dashboard(root, matricula))
     button_voltar.place(relx=0.05, rely=0.92)
+
 
     label_cursos_cadastrados = ctk.CTkLabel(frame_cursos_cadastrados, font=("Arial", 25, "bold"), text="Cursos cadastrados:")
     label_cursos_cadastrados.place(relx=0.05, rely=0.05)

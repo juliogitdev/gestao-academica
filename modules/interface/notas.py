@@ -146,6 +146,6 @@ def mostrar_notas(root, matricula):
     button_voltar = ctk.CTkButton(
         frame_notas, 
         text="Voltar", 
-        command=lambda: dashboard.exibir_dashboard(root, matricula, True)
+        command=lambda: dashboard.exibir_dashboard(root, matricula)
     )
     button_voltar.grid(row=2, column=0, columnspan=7, pady=10)
