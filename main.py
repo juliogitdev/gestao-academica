@@ -9,12 +9,16 @@ def iniciar_app():
     ctk.set_default_color_theme(config.TEMA_COR)
     root = ctk.CTk()
     root.title("Sistema Gestão Acadêmica")
-    root.geometry("800x600")
-
     
-    #verifica se já existe aluno cadastrado no sistema para selecionar a tela inicial
+    # Defina o tamanho mínimo da janela, mas permita redimensionamento
+    root.minsize(800, 600)  # Tamanho mínimo da janela
+    root.geometry("800x600")  # Define as dimensões iniciais da janela
+
+    root.lift()
+    root.attributes('-topmost', True)
+
+    # Verifica se já existe aluno cadastrado no sistema para selecionar a tela inicial
     if json_handler.verificar_alunos():
-        #login.tela_login(root)
         dashboard.exibir_dashboard(root, "12345")
     else:
         cadastro_aluno.tela_cadastro_aluno(root)
