@@ -8,9 +8,9 @@ def cadastrar_aluno(input_matricula, input_nome, input_email, root):
     nome = input_nome.get()
     email = input_email.get()
 
-    matricula_status = validators.validar_matricula(matricula)
-    nome_status = validators.validar_nome(nome)
-    email_status = validators.validar_email(email)
+    matricula_status = validators.validar_matricula(matricula)[0]
+    nome_status = validators.validar_nome(nome)[0]
+    email_status = validators.validar_email(email)[0]
 
     if matricula_status and nome_status and email_status:
         cadastro_status = json_handler.adicionar_aluno(nome, matricula, email)
