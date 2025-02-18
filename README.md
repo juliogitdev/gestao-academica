@@ -35,7 +35,7 @@ python main.py
 ## Estrutura de Arquivos
 
 - `rundev.py`: Script para instalar dependências e rodar o sistema.
-- `nome_do_seu_arquivo.py`: Arquivo principal do sistema (substitua com o nome correto).
+- `main.py`: Arquivo principal do sistema (substitua com o nome correto).
 - `data/data_base.json`: Arquivo onde os dados dos alunos, cursos e disciplinas são armazenados.
 - `requirements.txt`: Arquivo contendo as dependências do projeto.
 
