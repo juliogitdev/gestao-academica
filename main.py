@@ -12,16 +12,15 @@ def iniciar_app():
     
     root.title("Sistema Gestão Acadêmica")
     
-    # Defina o tamanho mínimo da janela, mas permita redimensionamento
-    root.minsize(800, 600)  # Tamanho mínimo da janela
     root.geometry("800x600")  # Define as dimensões iniciais da janela
+    #root.resizable(False, False) # Desativa o redimensionamento do sistema
+
 
     
 
     # Verifica se já existe aluno cadastrado no sistema para selecionar a tela inicial
     if json_handler.verificar_alunos():
-        #login.tela_login(root)
-        dashboard.exibir_dashboard(root, "12345")
+        login.tela_login(root)
     else:
         cadastro_aluno.tela_cadastro_aluno(root)
 
