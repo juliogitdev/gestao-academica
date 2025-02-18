@@ -56,6 +56,7 @@ def excluir_disciplina(root, id_disciplina, matricula, curso):
 
     # Se a resposta for sim, exclui a disciplina
     if resposta:
+        print(id_disciplina)
         json_handler.remover_disciplina(id_disciplina)
 
     # Atualiza a lista de disciplinas após a exclusão
@@ -119,7 +120,11 @@ def mostrar_disciplinas(root, matricula, opcao_curso='Selecionar curso'):
         for disciplina_id in disciplinas_cursos:
             disciplina_nome = dados['disciplinas'][disciplina_id]['nome']
             ctk.CTkLabel(frame_scroll_disciplinas, text=disciplina_nome, font=('Arial', 20)).pack(anchor='w', padx=10, pady=5)
-            ctk.CTkButton(frame_scroll_disciplinas, text="Excluir", width=50, fg_color=cor_vermelho, font=("Arial",10,"bold"), hover_color='red', command= lambda: excluir_disciplina(root, disciplina_id, matricula, dados['cursos'][id_curso_selecionado]['nome'])).pack(anchor='w', padx=10)
+            ctk.CTkButton(
+    frame_scroll_disciplinas, text="Excluir", width=50, fg_color=cor_vermelho, 
+    font=("Arial",10,"bold"), hover_color='red', 
+    command=lambda disciplina_id=disciplina_id: excluir_disciplina(root, disciplina_id, matricula, dados['cursos'][id_curso_selecionado]['nome'])).pack(anchor='w', padx=10)
+
 
     # Criação da combobox para selecionar o curso e filtrar as disciplinas
     combobox = ctk.CTkComboBox(frame_disciplinas, values=nomes_disciplinas, command=filtrar_disciplinas, state='readonly')
