@@ -99,8 +99,8 @@ def mostrar_disciplinas(root, matricula, opcao_curso='Selecionar curso'):
                                                 command=lambda: tela_adicionar_disciplina(root, combobox, cursos, matricula))
     button_adicionar_disciplina.pack(pady=10)
 
-    button_voltar = ctk.CTkButton(frame_disciplinas, text="Voltar", fg_color='transparent', font=("Arial", 18, "bold"),
+    button_voltar = ctk.CTkButton(frame_disciplinas, text="Voltar", font=("Arial", 18, "bold"),
                                   border_color=cor_verde, border_width=1,
                                   command=lambda: dashboard.exibir_dashboard(root, matricula))
-    button_voltar.pack(pady=10, anchor='w', padx=10)
+    button_voltar.pack(anchor='w', padx=20, pady=20)
 

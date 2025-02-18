@@ -33,7 +33,7 @@ def exibir_dashboard(root, matricula):
     label_gestao_academica.place(relx=0.5, rely=0.5, anchor='center')
 
     # Frame para os botões de navegação (menu)
-    frame_nav = ctk.CTkFrame(tela_dashboard, corner_radius=0, fg_color="transparent")
+    frame_nav = ctk.CTkFrame(tela_dashboard, corner_radius=0)
     frame_nav.place(relx=0, rely=0.1, relwidth=1, relheight=0.05)
 
     # Botões de navegação (organizados em colunas)

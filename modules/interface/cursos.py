@@ -5,12 +5,13 @@ from tkinter import messagebox
 
 def tela_adicionar_curso(root, matricula):
     janela = ctk.CTkToplevel(root)
-    janela.geometry("600x400")
-    janela.title("Cadastrar curso")
-
     # Garante que a janela fique acima da principal
     janela.lift()
     janela.attributes('-topmost', True)
+    janela.geometry("600x400")
+    janela.title("Cadastrar curso")
+
+    
 
     frame_itens = ctk.CTkFrame(janela)
     frame_itens.place(relx=0.5, rely=0.5, anchor='center')
@@ -54,7 +55,7 @@ def mostrar_detalhes(root, matricula, id_curso):
     label_qtd_disciplinas.pack(pady=10, padx=10)
 
     #label disciplinas
-    ctk.CTkLabel(janela, text='Cursos: ', font=("Arial", 22, 'bold')).pack(anchor='w', padx=40)
+    ctk.CTkLabel(janela, text='Disciplinas: ', font=("Arial", 22, 'bold')).pack(anchor='w', padx=40)
 
     frame_disciplinas = ctk.CTkScrollableFrame(janela)
     frame_disciplinas.pack(padx=20, fill='x', expand=True)
@@ -89,7 +90,7 @@ def tela_cursos(root, matricula):
     frame_cursos_cadastrados = ctk.CTkFrame(root)
     frame_cursos_cadastrados.place(relx=0.05, rely=0.1, relwidth=0.9, relheight=0.8)
 
-    button_voltar = ctk.CTkButton(root, text="Voltar", fg_color='transparent', font=("Arial", 18, "bold"), border_color=cor_verde, border_width=1, command= lambda: dashboard.exibir_dashboard(root, matricula))
+    button_voltar = ctk.CTkButton(root, text="Voltar", font=("Arial", 18, "bold"), border_color=cor_verde, border_width=1, command= lambda: dashboard.exibir_dashboard(root, matricula))
     button_voltar.place(relx=0.05, rely=0.92)
 
 
@@ -122,7 +123,7 @@ def tela_cursos(root, matricula):
                                        [i]: mostrar_detalhes(root, matricula, id_curso))
         botao_detalhes.place(relx=0.72, relwidth=0.15, rely=0.5, anchor='center')
 
-        botao_excluir = ctk.CTkButton(frame_curso, text="Excluir", font=('Arial', 14, 'bold'), fg_color='transparent', hover_color=cor_vermelho, border_width=1, border_color=cor_vermelho, 
+        botao_excluir = ctk.CTkButton(frame_curso, text="Excluir", font=('Arial', 14, 'bold'), fg_color=cor_vermelho, hover_color=cor_vermelho, border_width=1, border_color=cor_vermelho, 
                                       command=lambda id_curso = cursos_id[i] : excluir_curso(id_curso, root, matricula))
 
         

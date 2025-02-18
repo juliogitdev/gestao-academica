@@ -1,11 +1,22 @@
 import customtkinter as ctk
 from modules.data import json_handler, validators  # Importando o módulo de validadores
 from tkinter import messagebox
-from modules.interface import dashboard, login  # Assumindo que você tem um módulo 'login' com a tela de login
+from modules.interface import dashboard, login
+import config
 
 def fechar_programa(root):
     root.quit()  # Encerra qualquer execução que esteja pendente
     root.destroy()  # Fecha a janela do Tkinter corretamente
+
+def trocar_tema(root, matricula):
+
+    if config.TEMA == 'light':
+        config.TEMA = 'dark'
+    else:
+        config.TEMA = 'light'
+    
+    ctk.set_appearance_mode(config.TEMA) 
+    return tela_perfil(root, matricula)
 
 def tela_perfil(root, matricula):
     # Limpa a tela
@@ -89,7 +100,7 @@ def tela_perfil(root, matricula):
          hover_color=cor_principal,
         command=salvar_alteracoes
     )
-    button_salvar.pack(pady=15)
+    
 
     # Botão de Voltar
     button_voltar = ctk.CTkButton(
@@ -109,6 +120,11 @@ def tela_perfil(root, matricula):
         command=lambda: login.tela_login(root)  # Supondo que você tenha uma função para exibir a tela de login
     )
     button_logout.place(relx=0.87, rely=0.96, anchor='center')
+
+    button_tema = ctk.CTkButton(frame_principal, text='Trocar tema', font=("Arial", 18, "bold"),
+         hover_color=cor_principal, command= lambda: trocar_tema(root, matricula))
+    button_tema.pack(pady=20)
+    button_salvar.pack(pady=15)
 
     # Ao fechar, chamamos a função de limpar na janela principal
     root.protocol("WM_DELETE_WINDOW", lambda: fechar_programa(root))
