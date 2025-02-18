@@ -46,3 +46,6 @@ python main.py
 3. **Gerenciamento de Notas:** O sistema permite registrar até duas notas por disciplina.
 4. **Gerenciamento de Disciplinas e Cursos:** Disciplinas podem ser removidas e associadas a novos cursos.
 5. **Verificação de Login:** O sistema verifica a matrícula e o e-mail do aluno para permitir o acesso.
+
+## Link de demonstração do programa
+`https://www.youtube.com/watch?v=I5AXcWThWk8`
